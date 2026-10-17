@@ -25,6 +25,10 @@ public:
       busio_genericdevice_write_t write_func,
       busio_genericdevice_readreg_t readreg_func = nullptr,
       busio_genericdevice_writereg_t writereg_func = nullptr);
+  // delete the copy constructor and the copy-assignment operator; internal
+  // state is not safe to duplicate!
+  Adafruit_GenericDevice(const Adafruit_GenericDevice &) = delete;
+  Adafruit_GenericDevice &operator=(const Adafruit_GenericDevice &) = delete;
 
   bool begin(void);
   void end(void);

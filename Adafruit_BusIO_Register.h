@@ -62,6 +62,10 @@ public:
                           uint16_t reg_addr, uint8_t width = 1,
                           uint8_t byteorder = LSBFIRST,
                           uint8_t address_width = 1);
+  // delete the copy constructor and the copy-assignment operator; internal
+  // state is not safe to duplicate!
+  Adafruit_BusIO_Register(const Adafruit_BusIO_Register &) = delete;
+  Adafruit_BusIO_Register &operator=(const Adafruit_BusIO_Register &) = delete;
 
   bool read(uint8_t *buffer, uint8_t len);
   bool read(uint8_t *value);

@@ -8,6 +8,11 @@
 class Adafruit_I2CDevice {
 public:
   Adafruit_I2CDevice(uint8_t addr, TwoWire *theWire = &Wire);
+  // delete the copy constructor and the copy-assignment operator; internal
+  // state is not safe to duplicate!
+  Adafruit_I2CDevice(const Adafruit_SPIDevice &) = delete;
+  Adafruit_I2CDevice &operator=(const Adafruit_SPIDevice &) = delete;
+
   uint8_t address(void);
   bool begin(bool addr_detect = true);
   void end(void);
